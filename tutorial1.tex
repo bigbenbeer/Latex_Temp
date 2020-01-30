@@ -1,0 +1,90 @@
+\documentclass[12pt,a4paper]{report}
+
+\usepackage{sectsty} %Package needed to format the section headings. This package is responsible for the \underbar and \underline errors
+%\usepackage{showframe} %Helper package to show document outlines
+
+\usepackage{graphicx} %Package for importing graphics (pics)
+\usepackage{ragged2e} %Package for justifying text
+\usepackage{tikz} %Package for advanced image positioning
+\usepackage{xcolor} %Package for changing the color of text
+\usepackage{etoolbox} %Package to change abstract title to be at the top of the page
+\patchcmd{\abstract}{\null\vfil}{}{}{} %Abstract patch: do nog delete
+\usepackage{tocloft} %Package to properly format Table of Contents
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftaftertoctitleskip}{0pt}
+
+
+\graphicspath{ {cover/} } %Directory for cover image
+
+\definecolor{Puk_Pers}{RGB}{108, 61, 145}
+
+\renewcommand\abstractname{\textcolor{Puk_Pers}{Abstract}} %To make the abstract purple
+\renewcommand{\contentsname}{\center\bfseries\Large \textcolor{Puk_Pers}{Table of Contents}\center}
+\renewcommand{\listfigurename}{\center\bfseries\Large \textcolor{Puk_Pers}{List of Figures}\center}
+\renewcommand{\listtablename}{\center\bfseries\Large \textcolor{Puk_Pers}{List of Tables}\center}      
+\renewcommand\thesection{\arabic{section}}
+
+\sectionfont{\color{Puk_Pers}}
+\subsectionfont{\color{Puk_Pers}}
+\subsubsectionfont{\color{Puk_Pers}}
+
+\begin{document}
+\begin{titlepage}
+	
+\begin{tikzpicture}[remember picture,overlay]
+\node[inner sep=0pt, opacity=1] (purple_cover) at (6.32,-0.9)
+    {\includegraphics[width=\paperwidth]{NWU_Purple_Cover}};
+	%\node[anchor=north west,inner sep=0pt] at (current page.north west)
+    %	{\includegraphics[scale=1]{NWU_Purple_Cover}};
+\end{tikzpicture}
+	
+	\centering
+
+	\vspace{4cm}
+	{\huge\bfseries \textcolor{Puk_Pers}{PROJECT TITLE}\par}
+	\vspace{2cm}
+	{\Large\itshape \textcolor{Puk_Pers}{INITIALS AND SURNAME}\par}
+	\vspace{2cm}
+		{\scshape\LARGE DOCUMENT TYPE HERE  \par}
+	\vspace{5cm}
+\begin{flushleft}
+	Supervisor: SUPERVISOR NAME\par
+	Date: \today  \par
+	Student No: STUDENT NO\par
+\end{flushleft}
+
+\end{titlepage}
+
+\begin{abstract}
+\thispagestyle{empty}
+\justify
+WRITE YOUR ABSTRACT HERE
+\end{abstract}
+%\pagebreak
+
+
+\tableofcontents
+
+\listoffigures
+
+\listoftables
+\pagebreak
+\pagenumbering{arabic}
+
+\pagebreak
+
+\section{Section1}
+Bla bla bla
+\subsection{Subsection 1}
+bla bla
+\subsubsection{SubSubsection 1}
+
+\subsection{Subsection 2}
+bla bla
+
+\section{Section 2}
+Bla bla bla
+
+$ x^2 + 4x + 9 = 250 $
+
+\end{document}
