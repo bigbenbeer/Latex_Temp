@@ -1,4 +1,4 @@
-\documentclass[12pt,a4paper]{report}
+\documentclass{article}
 
 \usepackage{sectsty} %Package needed to format the section headings. This package is responsible for the \underbar and \underline errors
 %\usepackage{showframe} %Helper package to show document outlines
@@ -12,6 +12,11 @@
 \usepackage{tocloft} %Package to properly format Table of Contents
 \setlength{\cftbeforetoctitleskip}{0pt}
 \setlength{\cftaftertoctitleskip}{0pt}
+\usepackage[a4paper, total={16cm, 24cm}]{geometry} %Specifies the size of text area on the paper
+
+\sectionfont{\color{Puk_Pers}}
+\subsectionfont{\color{Puk_Pers}}
+\subsubsectionfont{\color{Puk_Pers}}
 
 
 \graphicspath{ {cover/} } %Directory for cover image
@@ -24,16 +29,14 @@
 \renewcommand{\listtablename}{\center\bfseries\Large \textcolor{Puk_Pers}{List of Tables}\center}      
 \renewcommand\thesection{\arabic{section}}
 
-\sectionfont{\color{Puk_Pers}}
-\subsectionfont{\color{Puk_Pers}}
-\subsubsectionfont{\color{Puk_Pers}}
+
 
 \begin{document}
 \begin{titlepage}
 	
 \begin{tikzpicture}[remember picture,overlay]
 \node[inner sep=0pt, opacity=1] (purple_cover) at (6.32,-0.9)
-    {\includegraphics[width=\paperwidth]{NWU_Purple_Cover}};
+    {\includegraphics[width=\paperwidth]{NWU_Purple_Cover.png}};
 	%\node[anchor=north west,inner sep=0pt] at (current page.north west)
     %	{\includegraphics[scale=1]{NWU_Purple_Cover}};
 \end{tikzpicture}
@@ -60,21 +63,22 @@
 \justify
 WRITE YOUR ABSTRACT HERE
 \end{abstract}
-%\pagebreak
-
+\pagebreak
 
 \tableofcontents
 
 \listoffigures
 
 \listoftables
+
 \pagebreak
+
 \pagenumbering{arabic}
 
 \pagebreak
 
 \section{Section1}
-Bla bla bla
+Bla bla bla 
 \subsection{Subsection 1}
 bla bla
 \subsubsection{SubSubsection 1}
@@ -83,8 +87,14 @@ bla bla
 bla bla
 
 \section{Section 2}
-Bla bla bla
+Bla bla bla \cite{CountdownTimer}
+
+
 
 $ x^2 + 4x + 9 = 250 $
 
+
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
 \end{document}
