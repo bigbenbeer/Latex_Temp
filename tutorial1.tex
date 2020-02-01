@@ -13,6 +13,7 @@
 \setlength{\cftbeforetoctitleskip}{0pt}
 \setlength{\cftaftertoctitleskip}{0pt}
 \usepackage[a4paper, total={16cm, 24cm}]{geometry} %Specifies the size of text area on the paper
+%\usepackage{natbib} %Package to use Harvard style bibliography, comment out if using IEEE style
 
 \sectionfont{\color{Puk_Pers}}
 \subsectionfont{\color{Puk_Pers}}
@@ -90,11 +91,37 @@ bla bla
 Bla bla bla \cite{CountdownTimer}
 
 
+%Picture tutorial
+%\begin{figure}[h]
+%\center
+%\includegraphics[scale=0.5]{NWU_Purple_Cover.png}
+%\textcolor{Puk_Pers}{\caption{CAPTION}}
+%label{LABEL_NAME}
+%\end{figure}
 
-$ x^2 + 4x + 9 = 250 $
+%Equation
+%\begin{equation} 
+%x^2 + 4x + 5
+%\label{EQUATION NAME}
+%\end{equation}
+
+%Tables
+%To generate tables make use of https://tablesgenerator.com/
+%Add caption, label and \center to the table code just underneath the \begin{table}
+%e.g.
+%\begin{table}[]
+%\center
+%\textcolor{Puk_Pers}{\caption{CAPTION}}
+%\label{LABEL NAME}
+%\begin{tabular}{lll}
+%la & la   \\
+%la & la   
+%\end{tabular}
+%\end{table}
 
 
 
-\bibliographystyle{IEEEtran}
+\bibliographystyle{IEEEtran} %- IEEE Style
+%\bibliographystyle{agsm} %- Harvard style
 \bibliography{references}
 \end{document}
