@@ -13,35 +13,35 @@
 \setlength{\cftbeforetoctitleskip}{0pt}
 \setlength{\cftaftertoctitleskip}{0pt}
 \usepackage[a4paper, total={16cm, 24cm}]{geometry} %Specifies the size of text area on the paper
+\usepackage{hyperref} %Package to make the Table of Contents use hyperlinks
 %\usepackage{natbib} %Package to use Harvard style bibliography, comment out if using IEEE style
 
 \sectionfont{\color{Puk_Pers}}
 \subsectionfont{\color{Puk_Pers}}
 \subsubsectionfont{\color{Puk_Pers}}
 
-
 \graphicspath{ {cover/} } %Directory for cover image
 
 \definecolor{Puk_Pers}{RGB}{108, 61, 145}
 
-\renewcommand\abstractname{\textcolor{Puk_Pers}{Abstract}} %To make the abstract purple
+\renewcommand\abstractname{\Large \textcolor{Puk_Pers}{Abstract}} %To make the abstract purple
+
 \renewcommand{\contentsname}{\center\bfseries\Large \textcolor{Puk_Pers}{Table of Contents}\center}
 \renewcommand{\listfigurename}{\center\bfseries\Large \textcolor{Puk_Pers}{List of Figures}\center}
 \renewcommand{\listtablename}{\center\bfseries\Large \textcolor{Puk_Pers}{List of Tables}\center}      
 \renewcommand\thesection{\arabic{section}}
-
+\renewcommand{\refname}{Bibliography}
 
 
 \begin{document}
 \begin{titlepage}
-	
-\begin{tikzpicture}[remember picture,overlay]
-\node[inner sep=0pt, opacity=1] (purple_cover) at (6.32,-0.9)
-    {\includegraphics[width=\paperwidth]{NWU_Purple_Cover.png}};
-	%\node[anchor=north west,inner sep=0pt] at (current page.north west)
-    %	{\includegraphics[scale=1]{NWU_Purple_Cover}};
-\end{tikzpicture}
-	
+
+\begin{tikzpicture}[remember picture, overlay, transform shape]
+\node [anchor=north west, inner sep=0pt]
+    at (current page.north west)
+    {\includegraphics[width=\paperwidth]{NWU_Purple_Cover.png}
+    };
+\end{tikzpicture}	
 	\centering
 
 	\vspace{4cm}
@@ -59,12 +59,17 @@
 
 \end{titlepage}
 
+\thispagestyle{plain}
+
 \begin{abstract}
-\thispagestyle{empty}
+\addcontentsline{toc}{section}{Abstract}
+\pagenumbering{roman}
 \justify
+
 WRITE YOUR ABSTRACT HERE
+
 \end{abstract}
-\pagebreak
+\newpage
 
 \tableofcontents
 
@@ -75,8 +80,6 @@ WRITE YOUR ABSTRACT HERE
 \pagebreak
 
 \pagenumbering{arabic}
-
-\pagebreak
 
 \section{Section1}
 Bla bla bla 
@@ -120,7 +123,7 @@ Bla bla bla \cite{CountdownTimer}
 %\end{table}
 
 
-
+\addcontentsline{toc}{section}{Bibliography}
 \bibliographystyle{IEEEtran} %- IEEE Style
 %\bibliographystyle{agsm} %- Harvard style
 \bibliography{references}
