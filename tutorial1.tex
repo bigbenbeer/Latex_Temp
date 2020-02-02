@@ -14,9 +14,10 @@
 \setlength{\cftaftertoctitleskip}{0pt}
 \usepackage[a4paper, total={16cm, 24cm}]{geometry} %Specifies the size of text area on the paper
 \usepackage{hyperref} %Package to make the Table of Contents use hyperlinks
-%\usepackage{natbib} %Package to use Harvard style bibliography, comment out if using IEEE style
+\usepackage{natbib} %Package to use Harvard style bibliography, comment out if using IEEE style
 \usepackage{helvet} %Arial Font
 \renewcommand{\familydefault}{\sfdefault} %Command needed to make font arial
+
 
 \sectionfont{\color{Puk_Pers}}
 \subsectionfont{\color{Puk_Pers}}
@@ -32,7 +33,7 @@
 \renewcommand{\listfigurename}{\center\bfseries\Large \textcolor{Puk_Pers}{List of Figures}\center}
 \renewcommand{\listtablename}{\center\bfseries\Large \textcolor{Puk_Pers}{List of Tables}\center}      
 \renewcommand\thesection{\arabic{section}}
-\renewcommand{\refname}{Bibliography}
+%\renewcommand{\refname}{Bibliography}
 
 
 \begin{document}
@@ -64,9 +65,10 @@
 \thispagestyle{plain}
 
 \begin{abstract}
-\addcontentsline{toc}{section}{Abstract}
+\addcontentsline{toc}{section}{Abstract} %Abstract needs to be added to table of contents
 \pagenumbering{roman}
 \justify
+
 
 WRITE YOUR ABSTRACT HERE
 
@@ -83,7 +85,7 @@ WRITE YOUR ABSTRACT HERE
 
 \pagenumbering{arabic}
 
-\section{Section1}
+\section{Hoofstuk 1}
 Bla bla bla 
 \subsection{Subsection 1}
 bla bla
@@ -97,36 +99,42 @@ Bla bla bla \cite{CountdownTimer}
 
 
 %Picture tutorial
-%\begin{figure}[h]
-%\center
-%\includegraphics[scale=0.5]{NWU_Purple_Cover.png}
-%\textcolor{Puk_Pers}{\caption{CAPTION}}
-%\label{LABEL_NAME}
-%\end{figure}
+\begin{figure}[h]
+\center
+\includegraphics[scale=0.5]{NWU_Purple_Cover.png}
+\textcolor{Puk_Pers}{\caption{CAPTION}}
+\label{LABEL_NAME}
+\end{figure}
+
+With refernce to figure \ref{LABEL_NAME} 
+
 
 %Equation
-%\begin{equation} 
-%x^2 + 4x + 5
-%\label{EQUATION NAME}
-%\end{equation}
+\begin{equation} 
+x^2 + 4x + 5 
+\label{EQUATION NAME}
+\end{equation}
 
 %Tables
 %To generate tables make use of https://tablesgenerator.com/
 %Add caption, label and \center to the table code just underneath the \begin{table}
 %e.g.
-%\begin{table}[]
-%\center
-%\textcolor{Puk_Pers}{\caption{CAPTION}}
-%\label{LABEL NAME}
-%\begin{tabular}{lll}
-%la & la   \\
-%la & la   
-%\end{tabular}
-%\end{table}
+\begin{table}[]
+\center
+\textcolor{Puk_Pers}{\caption{CAPTION}}
+\vspace{0.1cm}
+\label{LABEL NAME}
+\begin{tabular}{lll}
+la & la   \\
+la & la   
+\end{tabular}
+\end{table}
+
+\citep{CountdownTimer}
 
 
-\addcontentsline{toc}{section}{Bibliography}
-\bibliographystyle{IEEEtran} %- IEEE Style
-%\bibliographystyle{agsm} %- Harvard style
+\addcontentsline{toc}{section}{References}
+%\bibliographystyle{IEEEtran} %- IEEE Style
+\bibliographystyle{humannat} %- Harvard style
 \bibliography{references}
 \end{document}
