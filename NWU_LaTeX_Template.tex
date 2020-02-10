@@ -1,0 +1,227 @@
+\documentclass[a4paper, 11pt]{article} %Here you can change the font size of the entire document
+
+
+%\\------------------------------------------------------\\
+%\\ Packages needed for the operation of the template
+%\\ DO NOT DELETE THIS
+\usepackage{sectsty} %Package needed to format the section headings. This package is responsible for the \underbar and \underline errors
+\usepackage{graphicx} %Package for importing graphics (pics)
+\usepackage{ragged2e} %Package for justifying text
+\usepackage{tikz} %Package for advanced image positioning
+\usepackage{xcolor} %Package for changing the color of text
+\usepackage{etoolbox} %Package to change abstract title to be at the top of the page
+\patchcmd{\abstract}{\null\vfil}{}{}{} %Abstract patch: do nog delete
+\usepackage{tocloft} %Package to properly format Table of Contents
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftaftertoctitleskip}{0pt}
+\usepackage[a4paper, margin=2.54cm]{geometry} %Specifies the size of text area on the paper
+\usepackage{hyperref} %Package to make the Table of Contents use hyperlinks
+\usepackage{etoolbox} %Package to remove abstract indent
+\ifundef{\abstract}{}{\patchcmd{\abstract}%
+    {\quotation}{\quotation\noindent\ignorespaces}{}{}}
+\usepackage{lipsum}    
+
+%\\------------------------------------------------------\\
+
+
+%\\------------------------------------------------------\\
+%\\Add user packages here\\
+%\usepackage{natbib} %Package to use Harvard style bibliography, comment out if using IEEE style
+%\usepackage{showframe} %Helper package to show document outlines
+%\\------------------------------------------------------\\
+
+
+%\\------------------------------------------------------\\
+%\\ Font Specifier
+%\\ Comment out this section if you want standard Times New Roman Font
+\usepackage{helvet} %Arial Font
+\renewcommand{\familydefault}{\sfdefault} %Command needed to make font arial
+%\\------------------------------------------------------\\
+
+
+%\\------------------------------------------------------\\
+%\\ Formatting of headings
+%\\ Here you can specify the size and color of all headings
+\sectionfont{\LARGE }
+\subsectionfont{\Large }
+\subsubsectionfont{\large }
+\renewcommand\abstractname{\LARGE Abstract} %To make the abstract heading purple
+\renewcommand{\contentsname}{\center \Large Table of Contents} 
+\renewcommand{\listfigurename}{\center\ \Large List of Figures}
+\renewcommand{\listtablename}{\center \Large List of Tables }      
+\renewcommand\thesection{\arabic{section}} %Specifies the numbering of sections
+%\renewcommand{\refname}{Bibliography} %Change this to your preferred heading (i.e. Bibliography, List of References etc)
+%\\------------------------------------------------------\\
+
+
+%\\------------------------------------------------------\\
+%\\ Page formatting
+\setlength{\parindent}{0in} 
+\setlength{\parskip}{8pt} %The space between paragraphs
+\renewcommand{\baselinestretch}{1.08} %The line spacing
+\graphicspath{ {cover/} } %Directory for cover imag
+%\\------------------------------------------------------\\
+
+
+%\\------------------------------------------------------\\
+%\\ NWU RGB Purple Color definition
+%\\ DO NOT CHANGE THIS
+\definecolor{Puk_Pers}{RGB}{108, 61, 145}
+%\\------------------------------------------------------\\
+
+
+%\\------------------------------------------------------\\
+%\\ Reformatting of Abstract
+\let\oldabstract\abstract
+\let\oldendabstract\endabstract
+\makeatletter
+\renewenvironment{abstract}
+{\renewenvironment{quotation}%
+               {\list{}{\addtolength{\leftmargin}{-9mm} % change this value to add or remove length to the the default
+                        \listparindent 0em%
+                        \itemindent    \listparindent%
+                        \rightmargin   \leftmargin%
+                        \parsep        \z@ \@plus\p@}%
+                \item\relax}%
+               {\endlist}%
+\oldabstract}
+{\oldendabstract}
+\makeatother
+%\\------------------------------------------------------\\
+
+\begin{document}
+
+\begin{titlepage}
+
+%\\------------------------------------------------------\\
+%\\This is for the purple splash
+\begin{tikzpicture}[remember picture, overlay, transform shape]
+\node [anchor=north west, inner sep=0pt]
+    at (current page.north west)
+    {\includegraphics[width=\paperwidth]{NWU_Purple_Cover.png}};
+\end{tikzpicture}	
+%\\------------------------------------------------------\\
+
+
+%\\------------------------------------------------------\\
+%\\ Cover material content
+\center
+\vspace{4cm}
+
+{\Huge PROJECT TITLE\par}
+
+\vspace{2cm}
+	
+{\Large\itshape INITIALS AND SURNAME\par}
+	
+\vspace{2cm}
+	
+{\LARGE DOCUMENT TYPE HERE  e.g. Practical Report\par}
+		
+\vspace{5cm}
+	
+\begin{flushleft}
+
+\large	Supervisor: SUPERVISOR NAME\par
+\large	Date: \today  \par %Do not remove the \today command. This automatically changes the date on the cover page to the current date
+\large	Student No: STUDENT NO\par
+\end{flushleft}
+
+\end{titlepage}
+%\\------------------------------------------------------\\
+
+%\\------------------------------------------------------\\
+%\\Abstract Section
+\thispagestyle{plain} 
+\pagenumbering{roman} 
+\begin{abstract}
+\addcontentsline{toc}{section}{Abstract}
+
+\justify
+
+\lipsum[1]
+
+
+\end{abstract}
+
+
+\newpage %Use newpage here instead of \pagebreak
+
+\tableofcontents
+
+\listoffigures
+
+\listoftables
+
+\pagebreak
+
+\pagenumbering{arabic}
+
+%\\------------------------------------------------------\\
+%\\Content Section
+\section{Section}
+The quick brown fox jumps over the lazy dog.
+
+\subsection{Subsection 1}
+The quick brown fox jumps over the lazy dog.
+
+\subsubsection{SubSubsection 1}
+The quick brown fox jumps over the lazy dog.
+
+\subsection{Subsection 2}
+The quick brown fox jumps over the lazy dog.
+
+\section{Section 2}
+The quick brown fox jumps over the lazy dog.
+
+
+%\\------------------------------------------------------\\
+%\\Common documents extras and how to format them in LaTeX
+
+%\\Figure
+\begin{figure}[h!]
+\center
+\includegraphics[scale=0.5]{NWU_Purple_Cover.png}
+\caption{CAPTION}
+\label{LABEL_NAME} %LABEL MUST ALWAYS BE AFTER CAPTION
+\end{figure}
+
+With refernce to figure \ref{LABEL_NAME} %This is how you reference a figure/table/section/subsection etc Anything that has a \label is referred to in this way
+
+%Numbered Equation 
+%This is to insert a numbered equation
+\begin{equation} 
+x^2 + 4x + 5 
+\label{EQUATION NAME}
+\end{equation}
+
+%Inline Mathematics
+$ x + 1 = 12 $ %use the $ sign for maths you want in your paragraphs
+
+%Tables
+%For a detailed guide to tables use https://www.overleaf.com/learn/latex/Tables
+%To generate tables easily make use of https://tablesgenerator.com/
+%If using the generator above remember to add caption, label and \center to the table code just underneath the \begin{table}
+%e.g.
+\begin{table}[h!]
+\center
+\caption{CAPTION}
+\vspace{0.2cm}
+\label{LABEL NAME}
+\begin{tabular}{|l|l|}
+\hline
+a & b \\ \hline
+c & d   \\ \hline
+\end{tabular}
+\end{table}
+
+%\cite{BIBLIOGRAPHY_ITEM} - Citation example
+
+%\\------------------------------------------------------\\
+%\\ Uncomment this section for bibliography however make sure that the filename in \bibliography{} matches the actual filename of the .bib file
+%\\Use Zotero with the Better BibLaTeX add-on installed for the easiest bibliography setup
+%\addcontentsline{toc}{section}{Bibliography} %References/Bibliography has to be manually added to ToC
+%\bibliographystyle{IEEEtran} %- IEEE Style
+%\bibliographystyle{humannat} %- Harvard style
+%\bibliography{BIB FILE NAME}
+\end{document}
