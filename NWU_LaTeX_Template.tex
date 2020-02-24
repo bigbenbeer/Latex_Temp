@@ -28,6 +28,11 @@
 %\\Add user packages here\\
 %\usepackage{natbib} %Package to use Harvard style bibliography, comment out if using IEEE style
 %\usepackage{showframe} %Helper package to show document outlines
+\usepackage{enumitem} %Package to change the seperation of items in a list
+
+\usepackage{nomencl}%Package to create a list of acronyms
+\makenomenclature %Instruction for LaTeX to compile the nomenclature
+\renewcommand{\nomname}{\Large List of Abbreviations} %Renames the ToC heading
 %\\------------------------------------------------------\\
 
 
@@ -50,7 +55,7 @@
 \renewcommand{\listfigurename}{\center\ \Large List of Figures}
 \renewcommand{\listtablename}{\center \Large List of Tables }      
 \renewcommand\thesection{\arabic{section}} %Specifies the numbering of sections
-%\renewcommand{\refname}{Bibliography} %Change this to your preferred heading (i.e. Bibliography, List of References etc)
+\renewcommand{\refname}{Bibliography} %Change this to your preferred heading (i.e. Bibliography, List of References etc)
 %\\------------------------------------------------------\\
 
 
@@ -87,6 +92,32 @@
 \oldabstract}
 {\oldendabstract}
 \makeatother
+%\\------------------------------------------------------\\
+
+
+%\\------------------------------------------------------\\
+%\\ Nomenclature setup.
+%\\ This creates categories for the nomenclature (i.e. Maths, Abbrev etc)
+%\\ In order for nomenclature to work properly the following command must be run:
+%\\ pdflatex -synctex=1 -interaction=nonstopmode %.tex|pdflatex -synctex=1 -interaction=nonstopmode %.tex|pdflatex -synctex=1 -interaction=nonstopmode %.tex|makeindex %.nlo -s nomencl.ist -o %.nls|pdflatex -synctex=1 -interaction=nonstopmode %.tex|"C:/Program Files/Adobe/Reader 11.0/Reader/AcroRd32.exe" %.pdf
+%\\ Add this command to the list of custom user commands under the quick build section in TexMaker
+\usepackage{xstring}
+\usepackage{xstring}
+\usepackage{xpatch}
+\patchcmd{\thenomenclature}
+  {\leftmargin\labelwidth}
+  {\leftmargin\labelwidth\itemindent 1em }
+  {}{}
+ 
+\newcommand{\nomenclheader}[1]{%
+  \item[\hspace*{-\itemindent}\normalfont\bfseries#1]}
+\renewcommand\nomgroup[1]{%
+  \IfStrEqCase{#1}{%
+   {V}{\nomenclheader{Mathematical terms}}%   V - Variables
+   {P}{\nomenclheader{Parameters}}% P - Parameters
+   {A}{\nomenclheader{Acronyms}}% A - Acronyms
+  }%
+}
 %\\------------------------------------------------------\\
 
 \begin{document}
@@ -136,10 +167,9 @@
 \pagenumbering{roman} 
 \begin{abstract}
 \addcontentsline{toc}{section}{Abstract}
-
 \justify
 
-\lipsum[1]
+\lipsum[1] %generates example text
 
 
 \end{abstract}
@@ -153,75 +183,76 @@
 
 \listoftables
 
+\printnomenclature
+
 \pagebreak
 
 \pagenumbering{arabic}
 
 %\\------------------------------------------------------\\
 %\\Content Section
-\section{Section}
-The quick brown fox jumps over the lazy dog.
+\section{Introduction}
+\lipsum[1] %generates example text
 
 \subsection{Subsection 1}
-The quick brown fox jumps over the lazy dog.
+\lipsum[1] %generates example text
 
 \subsubsection{SubSubsection 1}
-The quick brown fox jumps over the lazy dog.
+\lipsum[1] %generates example text
 
-\subsection{Subsection 2}
-The quick brown fox jumps over the lazy dog.
+\nomenclature[A]{DC}{Direct Current}
 
-\section{Section 2}
-The quick brown fox jumps over the lazy dog.
+%\cite{BIBLIOGRAPHY_ITEM} - Citation example %%Do NOT use citep with IEEE, it generates compilation errors.
 
-
-%\\------------------------------------------------------\\
-%\\Common documents extras and how to format them in LaTeX
-
-%\\Figure
-\begin{figure}[h!]
-\center
-\includegraphics[scale=0.5]{NWU_Purple_Cover.png}
-\caption{CAPTION}
-\label{LABEL_NAME} %LABEL MUST ALWAYS BE AFTER CAPTION
-\end{figure}
-
-With refernce to figure \ref{LABEL_NAME} %This is how you reference a figure/table/section/subsection etc Anything that has a \label is referred to in this way
-
-%Numbered Equation 
-%This is to insert a numbered equation
-\begin{equation} 
-x^2 + 4x + 5 
-\label{EQUATION NAME}
-\end{equation}
-
-%Inline Mathematics
-$ x + 1 = 12 $ %use the $ sign for maths you want in your paragraphs
-
-%Tables
-%For a detailed guide to tables use https://www.overleaf.com/learn/latex/Tables
-%To generate tables easily make use of https://tablesgenerator.com/
-%If using the generator above remember to add caption, label and \center to the table code just underneath the \begin{table}
-%e.g.
-\begin{table}[h!]
-\center
-\caption{CAPTION}
-\vspace{0.2cm}
-\label{LABEL NAME}
-\begin{tabular}{|l|l|}
-\hline
-a & b \\ \hline
-c & d   \\ \hline
-\end{tabular}
-\end{table}
-
-%\cite{BIBLIOGRAPHY_ITEM} - Citation example
-
-%\\------------------------------------------------------\\
 %\\ Uncomment this section for bibliography however make sure that the filename in \bibliography{} matches the actual filename of the .bib file
 %\\Use Zotero with the Better BibLaTeX add-on installed for the easiest bibliography setup
 %\addcontentsline{toc}{section}{Bibliography} %References/Bibliography has to be manually added to ToC
 %\bibliographystyle{IEEEtran} %- IEEE Style
 %\bibliographystyle{humannat} %- Harvard style
 %\bibliography{BIB FILE NAME}
+
+%\\------------------------------------------------------\\
+%\\Common documents extras and how to format them in LaTeX
+
+%\\Figure
+%\begin{figure}[h!] %Always use the h! specifier. This forces LaTeX to place the figure here and it locks it in place. I.e. No Microsoft Word page dubstep
+%\center
+%\includegraphics[scale=0.5]{NWU_Purple_Cover.png}
+%\caption{CAPTION}
+%\label{LABEL_NAME} %LABEL MUST ALWAYS BE AFTER CAPTION AWLAYS
+%\end{figure}
+
+%With reference to figure \ref{LABEL_NAME} %This is how you reference a figure/table/section/subsection etc Anything that has a \label is referred to in this way
+
+%Numbered Equation 
+%This is to insert a numbered equation
+%\begin{equation} 
+%x^2 + 4x + 5 
+%\label{EQUATION NAME}
+%\end{equation}
+
+%Inline Mathematics
+%$ x + 1 = 12 $ %use the $ sign for maths you want in your paragraphs
+
+%Tables
+%For a detailed guide to tables use https://www.overleaf.com/learn/latex/Tables
+%To generate tables easily make use of EITHER the built in table wizard in Texmaker or https://tablesgenerator.com/
+%If using the generator (from online or Texmaker) above remember to add caption, label and \center to the table code just underneath the \begin{table}
+%e.g.
+%\begin{table}[h!]
+%\center
+%\caption{CAPTION}
+%\vspace{0.2cm}
+%\label{LABEL NAME}
+%\begin{tabular}{|l|l|}
+%\hline
+%a & b \\ \hline
+%c & d   \\ \hline
+%\end{tabular}
+%\end{table}
+
+
+
+%\\------------------------------------------------------\\
+
 \end{document}
