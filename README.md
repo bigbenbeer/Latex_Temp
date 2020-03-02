@@ -8,7 +8,7 @@ These apps are merely suggestions based on the experiences of others. Although t
 1. [Zotero](https://www.zotero.org/) is a reference manager
 2. [Better Bibtex](https://github.com/retorquere/zotero-better-bibtex/releases/) is a plugin for zotero which speeds up referencing speed
 3. [Texmaker](https://www.xm1math.net/texmaker/) as a LaTeX front-end
-4. [MikTex](https://miktex.org/download) as a LaTeX backend (you will very seldomly need to open this app, but it is required to get LaTeX working on windows (*MikTex is not needed for Linux installations*)
+4. [MikTex](https://miktex.org/download) as a LaTeX backend (you will very seldomly need to open this app, but it is required to get LaTeX working on windows (*MikTex is still needed for Linux installation in order to get referencing working*)
 
 ## Setup of suggested toolchain
 1. Install MikTex
