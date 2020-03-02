@@ -1,4 +1,9 @@
 \documentclass[a4paper, 11pt]{article} %Here you can change the font size of the entire document
+%\\------------------------------------------------------\\
+%\\ Instructions to user
+% Please add the following build script into your LaTeX compiler
+%\\ In Texmaker navigate to Options->Configure Texmkaer->Quick Build and paste this script into the "User" section
+%\\ pdflatex -synctex=1 -interaction=nonstopmode %.tex|pdflatex -synctex=1 -interaction=nonstopmode %.tex|pdflatex -synctex=1 -interaction=nonstopmode %.tex|makeindex %.nlo -s nomencl.ist -o %.nls|pdflatex -synctex=1 -interaction=nonstopmode %.tex|"C:/Program Files/Adobe/Reader 11.0/Reader/AcroRd32.exe" %.pdf
 
 
 %\\------------------------------------------------------\\
