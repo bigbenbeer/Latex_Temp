@@ -24,7 +24,8 @@
 \usepackage{etoolbox} %Package to remove abstract indent
 \ifundef{\abstract}{}{\patchcmd{\abstract}%
     {\quotation}{\quotation\noindent\ignorespaces}{}{}}
-\usepackage{lipsum}    
+\usepackage{lipsum} %Package to generate dummy text   
+\usepackage{float} %Package to fix figure placement
 
 %\\------------------------------------------------------\\
 
@@ -118,6 +119,7 @@
   \item[\hspace*{-\itemindent}\normalfont\bfseries#1]}
 \renewcommand\nomgroup[1]{%
   \IfStrEqCase{#1}{%
+  %Here you can change the nomenclature update
    {V}{\nomenclheader{Mathematical terms}}%   V - Variables
    {P}{\nomenclheader{Parameters}}% P - Parameters
    {A}{\nomenclheader{Acronyms}}% A - Acronyms
@@ -205,7 +207,7 @@
 \subsubsection{SubSubsection 1}
 \lipsum[1] %generates example text
 
-\nomenclature[A]{DC}{Direct Current}
+\nomenclature[A]{DC}{Direct Current} %Use this to add an entry into the nmeclature section. Refer to the preamble section that deals with the setup of the nomenclature for the index specifier. The letter in square brackets is for grouping of the abbreviations into seperate categories i.e. maths constants and the abbreviations etc
 
 %\cite{BIBLIOGRAPHY_ITEM} - Citation example %%Do NOT use citep with IEEE, it generates compilation errors.
 
@@ -220,7 +222,7 @@
 %\\Common documents extras and how to format them in LaTeX
 
 %\\Figure
-%\begin{figure}[h!] %Always use the h! specifier. This forces LaTeX to place the figure here and it locks it in place. I.e. No Microsoft Word page dubstep
+%\begin{figure}[H] %It is recommended to use the H specifier. This forces LaTeX to place the figure here and it locks it in place. I.e. No Microsoft Word page formatting dubstep
 %\center
 %\includegraphics[scale=0.5]{NWU_Purple_Cover.png}
 %\caption{CAPTION}
