@@ -26,7 +26,7 @@
     {\quotation}{\quotation\noindent\ignorespaces}{}{}}
 \usepackage{lipsum} %Package to generate dummy text   
 \usepackage{float} %Package to fix figure placement
-
+\usepackage{amsmath}
 %\\------------------------------------------------------\\
 
 
@@ -201,11 +201,62 @@
 \section{Introduction}
 \lipsum[1] %generates example text
 
+Here is an example of a correctly formatted table.
+\begin{table}[H]
+	\center
+	\caption{Example}
+	\vspace{0.2cm}
+	{\renewcommand{\arraystretch}{1.5}%
+		\begin{tabular}{|c|c|c|}
+			\hline
+			\textbf{Bla} & \textbf{BlaBla} & \textbf{BlaBlaBla} \\
+			\hline 
+			\hline
+			\multicolumn{3}{|c|}{BlaBlaBla} \\
+			\hline
+			BlaBlaBla & BlaBlaBla & BlaBlaBla \\
+			\hline 
+			BlaBlaBla & BlaBlaBla & BlaBlaBla \\
+			\hline
+		\end{tabular}
+	}
+\end{table}
+
 \subsection{Subsection 1}
 \lipsum[1] %generates example text
 
+Example of an equation
+\begin{equation}
+\begin{split}
+\dot{\textbf{x}}(t)& = a\textbf{x}(t) + b\textbf{u}(t) \\
+\textbf{y}(t) &= c\textbf{x}(t) + d\textbf{u}(t)
+\end{split}
+\end{equation}
 \subsubsection{SubSubsection 1}
 \lipsum[1] %generates example text
+
+\paragraph{Paragraph 1}
+\lipsum[2]
+
+	\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{waterfall-model}
+	\caption{Example caption}
+	\label{fig:Ng1} 
+\end{figure}
+
+
+\paragraph{Paragraph 2}
+\lipsum[2]
+\paragraph{Paragraph 3}
+\lipsum[2]
+\pagebreak
+Example of a figure
+
+
+
+
+
 
 \nomenclature[A]{DC}{Direct Current} %Use this to add an entry into the nmeclature section. Refer to the preamble section that deals with the setup of the nomenclature for the index specifier. The letter in square brackets is for grouping of the abbreviations into seperate categories i.e. maths constants and the abbreviations etc
 
