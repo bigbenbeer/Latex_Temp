@@ -20,7 +20,7 @@
 \setlength{\cftbeforetoctitleskip}{0pt}
 \setlength{\cftaftertoctitleskip}{0pt}
 \usepackage[a4paper, margin=2.54cm]{geometry} %Specifies the size of text area on the paper
-\usepackage{hyperref} %Package to make the Table of Contents use hyperlinks
+\usepackage[hidelinks]{hyperref} %Package to make the Table of Contents use hyperlinks
 \usepackage{etoolbox} %Package to remove abstract indent
 \ifundef{\abstract}{}{\patchcmd{\abstract}%
     {\quotation}{\quotation\noindent\ignorespaces}{}{}}
